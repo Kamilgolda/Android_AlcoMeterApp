@@ -1,4 +1,4 @@
-package com.example.alcometerapp.ui.profile
+package com.example.alcometerapp.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.alcometerapp.MainViewModel
+import com.example.alcometerapp.ui.viewmodel.MainViewModel
 import com.example.alcometerapp.databinding.FragmentProfileBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint

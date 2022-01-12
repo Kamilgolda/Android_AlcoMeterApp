@@ -1,16 +1,13 @@
-package com.example.alcometerapp.ui.promiles
+package com.example.alcometerapp.ui.list
 
 import android.content.Context
 import android.graphics.Canvas
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.alcometerapp.MainActivity
 import com.example.alcometerapp.R
 
-import dagger.hilt.android.qualifiers.ApplicationContext
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
-import kotlin.coroutines.coroutineContext
 
 abstract class SwipeGesture(context: Context) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 

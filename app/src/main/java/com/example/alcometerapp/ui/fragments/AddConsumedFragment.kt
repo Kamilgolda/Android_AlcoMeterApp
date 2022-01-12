@@ -1,4 +1,4 @@
-package com.example.alcometerapp.ui.promiles
+package com.example.alcometerapp.ui.fragments
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -12,7 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.alcometerapp.MainViewModel
+import com.example.alcometerapp.ui.viewmodel.MainViewModel
 import com.example.alcometerapp.databinding.FragmentAddConsumedBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -83,13 +83,12 @@ class AddConsumedFragment : Fragment() {
             if(viewModel.strength.value != "" && viewModel.portion.value != "" && viewModel.quantity.value != "" && viewModel.startDate.value != null && viewModel.endDate.value != null){
                 viewModel.insertConsumed()
                 this.findNavController().navigate(
-                    AddConsumedFragmentDirections.actionAddConsumedFragmentToNavigationPromiles())
+                    com.example.alcometerapp.ui.fragments.AddConsumedFragmentDirections.actionAddConsumedFragmentToNavigationPromiles()
+                )
             }
             else{
                 Toast.makeText(context, "Uzupełnij wszystkie pola", Toast.LENGTH_LONG).show()
             }
-
-
         }
 
         return root

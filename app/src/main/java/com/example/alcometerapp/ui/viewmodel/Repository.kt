@@ -1,10 +1,10 @@
-package com.example.alcometerapp
+package com.example.alcometerapp.ui.viewmodel
 
 import androidx.lifecycle.LiveData
-import com.example.alcometerapp.ui.profile.Profile
-import com.example.alcometerapp.ui.profile.ProfileDao
-import com.example.alcometerapp.ui.promiles.Result
-import com.example.alcometerapp.ui.promiles.ResultDao
+import com.example.alcometerapp.database.Profile
+import com.example.alcometerapp.database.ProfileDao
+import com.example.alcometerapp.database.Result
+import com.example.alcometerapp.database.ResultDao
 
 class Repository constructor(
     private val profileDao: ProfileDao,

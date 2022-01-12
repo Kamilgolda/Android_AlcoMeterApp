@@ -1,4 +1,4 @@
-package com.example.alcometerapp.ui.profile
+package com.example.alcometerapp.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

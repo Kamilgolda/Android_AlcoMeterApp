@@ -1,4 +1,4 @@
-package com.example.alcometerapp
+package com.example.alcometerapp.utils
 
 import androidx.room.TypeConverter
 import java.util.*

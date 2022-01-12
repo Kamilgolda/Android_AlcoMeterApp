@@ -1,4 +1,4 @@
-package com.example.alcometerapp.ui.promiles
+package com.example.alcometerapp.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,11 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.alcometerapp.MainViewModel
+import com.example.alcometerapp.ui.viewmodel.MainViewModel
 import com.example.alcometerapp.databinding.FragmentConsumedListBinding
+import com.example.alcometerapp.database.Result
+import com.example.alcometerapp.ui.list.ItemRecyclerViewAdapter
+import com.example.alcometerapp.ui.list.SwipeGesture
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -63,12 +66,14 @@ class ConsumedListFragment : Fragment() {
 
         binding.addConsumedButton.setOnClickListener { view ->
             this.findNavController().navigate(
-                ConsumedListFragmentDirections.actionNavigationPromilesToAddConsumedFragment())
+                com.example.alcometerapp.ui.fragments.ConsumedListFragmentDirections.actionNavigationPromilesToAddConsumedFragment()
+            )
         }
 
         binding.checkButton.setOnClickListener {
             this.findNavController().navigate(
-                ConsumedListFragmentDirections.actionNavigationPromilesToCheckFragment())
+                com.example.alcometerapp.ui.fragments.ConsumedListFragmentDirections.actionNavigationPromilesToCheckFragment()
+            )
         }
 
         return root

@@ -1,10 +1,9 @@
-package com.example.alcometerapp
+package com.example.alcometerapp.ui.viewmodel
 
 import androidx.lifecycle.*
-import com.example.alcometerapp.ui.profile.Profile
-import com.example.alcometerapp.ui.promiles.Result
+import com.example.alcometerapp.database.Profile
+import com.example.alcometerapp.database.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 

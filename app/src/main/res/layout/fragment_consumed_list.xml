@@ -6,14 +6,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.alcometerapp.MainViewModel" />
+            type="com.example.alcometerapp.ui.viewmodel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="65dp"
-        tools:context=".ui.promiles.ConsumedListFragment">
+        tools:context=".ui.fragments.ConsumedListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"

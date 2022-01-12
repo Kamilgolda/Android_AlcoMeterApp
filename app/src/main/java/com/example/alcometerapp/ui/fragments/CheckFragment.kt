@@ -1,4 +1,4 @@
-package com.example.alcometerapp.ui.promiles
+package com.example.alcometerapp.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,24 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.alcometerapp.MainViewModel
+import com.example.alcometerapp.ui.viewmodel.MainViewModel
 import com.example.alcometerapp.R
-import com.example.alcometerapp.databinding.FragmentAddConsumedBinding
 import com.example.alcometerapp.databinding.FragmentCheckBinding
+import com.example.alcometerapp.database.Result
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import dagger.hilt.android.AndroidEntryPoint
-import java.time.Duration.between
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.Period.between
-import java.time.chrono.ChronoPeriod.between
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.time.Duration
 
 @AndroidEntryPoint
 class CheckFragment : Fragment() {

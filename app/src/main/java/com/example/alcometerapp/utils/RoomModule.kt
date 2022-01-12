@@ -1,9 +1,10 @@
-package com.example.alcometerapp
+package com.example.alcometerapp.utils
 
 import android.content.Context
 import androidx.room.Room
-import com.example.alcometerapp.ui.profile.ProfileDao
-import com.example.alcometerapp.ui.promiles.ResultDao
+import com.example.alcometerapp.database.Database
+import com.example.alcometerapp.database.ProfileDao
+import com.example.alcometerapp.database.ResultDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

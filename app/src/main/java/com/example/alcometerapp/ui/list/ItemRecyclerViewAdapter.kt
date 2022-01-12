@@ -1,14 +1,12 @@
-package com.example.alcometerapp.ui.promiles
+package com.example.alcometerapp.ui.list
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.viewModels
-import com.example.alcometerapp.MainViewModel
 import com.example.alcometerapp.R
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.alcometerapp.database.Result
 
 class ItemRecyclerViewAdapter: RecyclerView.Adapter<ItemRecyclerViewAdapter.ViewHolder>() {
 
@@ -22,7 +20,7 @@ class ItemRecyclerViewAdapter: RecyclerView.Adapter<ItemRecyclerViewAdapter.View
         mListener = listener
     }
 
-    fun deleteItem(i: Int) : Result{
+    fun deleteItem(i: Int) : Result {
         data.drop(i);
         notifyDataSetChanged()
         return data.get(i)
@@ -52,7 +50,7 @@ class ItemRecyclerViewAdapter: RecyclerView.Adapter<ItemRecyclerViewAdapter.View
         fun bind(item: Result) {
             val res = itemView.context.resources
             consumedInfo.text = item.quantity.toString() + "x " + item.portion.toString() + "ml " + item.strength.toString() + "% alkoholu"
-            consumedDates.text = item.startDate.date.toString() + "/" + (item.startDate.month+1).toString() + "/" + item.startDate.year.toString() + " " + item.startDate.hours.toString() + ":" + item.startDate.minutes.toString() + "-" + item.endDate.hours.toString() + ":" + item.endDate.minutes.toString()
+            consumedDates.text = item.startDate.date.toString() + "/" + (item.startDate.month+1).toString() + "/" + item.startDate.year.plus(1900).toString() + " " + item.startDate.hours.toString() + ":" + item.startDate.minutes.toString() + "-" + item.endDate.hours.toString() + ":" + item.endDate.minutes.toString()
         }
 
         companion object {

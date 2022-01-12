@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.alcometerapp.ui.profile.ProfileFragment"
+        android:name="com.example.alcometerapp.ui.fragments.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_promiles"
-        android:name="com.example.alcometerapp.ui.promiles.ConsumedListFragment"
+        android:name="com.example.alcometerapp.ui.fragments.ConsumedListFragment"
         android:label="@string/title_promiles"
         tools:layout="@layout/fragment_consumed_list" >
         <action
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/addConsumedFragment"
-        android:name="com.example.alcometerapp.ui.promiles.AddConsumedFragment"
+        android:name="com.example.alcometerapp.ui.fragments.AddConsumedFragment"
         android:label="Dodawanie spożytego alkoholu"
         tools:layout="@layout/fragment_add_consumed">
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/checkFragment"
-        android:name="com.example.alcometerapp.ui.promiles.CheckFragment"
+        android:name="com.example.alcometerapp.ui.fragments.CheckFragment"
         android:label="Sprawdzanie promili"
         tools:layout="@layout/fragment_check"/>
 </navigation>

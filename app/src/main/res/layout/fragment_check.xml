@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.alcometerapp.MainViewModel" />
+            type="com.example.alcometerapp.ui.viewmodel.MainViewModel" />
     </data>
 
     <ScrollView
@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            tools:context=".ui.promiles.CheckFragment">
+            tools:context=".ui.fragments.CheckFragment">
 
             <TextView
                 android:layout_width="match_parent"

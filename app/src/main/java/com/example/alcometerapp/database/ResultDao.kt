@@ -1,8 +1,7 @@
-package com.example.alcometerapp.ui.promiles
+package com.example.alcometerapp.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.alcometerapp.ui.profile.Profile
 
 @Dao
 interface ResultDao {
