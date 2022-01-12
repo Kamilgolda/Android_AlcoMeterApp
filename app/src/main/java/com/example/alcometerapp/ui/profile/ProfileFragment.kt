@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.alcometerapp.MainViewModel
 import com.example.alcometerapp.databinding.FragmentProfileBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -34,16 +36,16 @@ class ProfileFragment : Fragment() {
 
         binding.lifecycleOwner = this;
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
         binding.viewModel = viewModel;
 
         viewModel.hasProfile.observe(viewLifecycleOwner, Observer {
             if( it == true){
                 binding.profileLayout.visibility = View.GONE;
                 binding.editProfileLayout.visibility = View.VISIBLE;
+            }
+            else{
+                binding.profileLayout.visibility = View.VISIBLE;
+                binding.editProfileLayout.visibility = View.GONE;
             }
         })
 
@@ -81,14 +83,19 @@ class ProfileFragment : Fragment() {
             binding.profileLayout.visibility=View.GONE
             binding.editProfileLayout.visibility=View.VISIBLE;
         }
+
+        binding.buttonSaveProfile.setOnClickListener{
+            if(viewModel.profileName.value != "" && viewModel.gender.value != "" && viewModel.growth.value != null && viewModel.weight.value != null){
+                viewModel.updateProfile()
+                Snackbar.make(it, "Pomyślnie zapisano profil", Snackbar.LENGTH_LONG)
+                    .show()
+            }
+            else{
+                Toast.makeText(context, "Uzupełnij wszystkie pola", Toast.LENGTH_LONG).show()
+            }
+
+        }
         return root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-
     }
 
     override fun onDestroyView() {

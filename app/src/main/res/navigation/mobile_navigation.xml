@@ -13,13 +13,29 @@
 
     <fragment
         android:id="@+id/navigation_promiles"
-        android:name="com.example.alcometerapp.ui.promiles.PromilesFragment"
+        android:name="com.example.alcometerapp.ui.promiles.ConsumedListFragment"
         android:label="@string/title_promiles"
-        tools:layout="@layout/fragment_promiles" />
+        tools:layout="@layout/fragment_consumed_list" >
+        <action
+            android:id="@+id/action_navigation_promiles_to_addConsumedFragment"
+            app:destination="@id/addConsumedFragment" />
+        <action
+            android:id="@+id/action_navigation_promiles_to_checkFragment"
+            app:destination="@id/checkFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.alcometerapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/addConsumedFragment"
+        android:name="com.example.alcometerapp.ui.promiles.AddConsumedFragment"
+        android:label="Dodawanie spożytego alkoholu"
+        tools:layout="@layout/fragment_add_consumed">
+        <action
+            android:id="@+id/action_addConsumedFragment_to_navigation_promiles"
+            app:destination="@id/navigation_promiles" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkFragment"
+        android:name="com.example.alcometerapp.ui.promiles.CheckFragment"
+        android:label="Sprawdzanie promili"
+        tools:layout="@layout/fragment_check"/>
 </navigation>

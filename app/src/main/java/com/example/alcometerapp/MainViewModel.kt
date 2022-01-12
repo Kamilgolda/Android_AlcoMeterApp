@@ -2,8 +2,10 @@ package com.example.alcometerapp
 
 import androidx.lifecycle.*
 import com.example.alcometerapp.ui.profile.Profile
+import com.example.alcometerapp.ui.promiles.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,49 +21,47 @@ class MainViewModel @Inject constructor(
     val growth = MutableLiveData<Int>()
     val weight = MutableLiveData<Int>()
 
+    var consumed = MutableLiveData<Result?>()
 
-//    private val _text = MutableLiveData<String>().apply {
-//        value = "This is home Fragment"
-//    }
-//    val text: LiveData<String> = _text
+    val strength = MutableLiveData<String>()
+    val portion = MutableLiveData<String>()
+    val quantity = MutableLiveData<String>()
+    val startDate = MutableLiveData<Date>()
+    val endDate = MutableLiveData<Date>()
 
     private val _hasProfile = MutableLiveData<Boolean?>()
 
-    /**
-     * When true immediately navigate back to the [SleepTrackerFragment]
-     */
     val hasProfile: LiveData<Boolean?>
         get() = _hasProfile
 
-    //var userName: LiveData<String> = _userName;
-
-    //val user = profileRepository.getUser(userId).asLiveData()
-
-//    private fun getUserFromDatabase(): User? {
-//        var user = database.getUser()
-////        if (night?.endTimeMilli != night?.startTimeMilli) {
-////            night = null
-////        }
-//        return user
-//    }
+    val consumedList = repository.getAllResults()
 
     init {
         initializeUser()
-        _hasProfile.value=true;
+        _hasProfile.value = profile.value?.userId != null;
     }
 
     private fun initializeUser() {
-        viewModelScope.launch {
-            profile.value = repository.getProfile()
+        profile.value = repository.getProfile()
+        if(profile.value?.userId != null) {
             profileName.value = profile.value?.name;
             gender.value = profile.value?.gender;
             growth.value = profile.value?.growth;
             weight.value = profile.value?.weight
         }
+        else{
+            gender.value = "man"
+            growth.value = 150
+            weight.value = 70
+        }
     }
-    fun update(){
-        if(profile.value == null){
-            val newProfile = Profile(name = profileName.toString(), gender = gender.toString(), growth = growth.value?: 0, weight = weight.value?: 0)
+
+    fun updateProfile(){
+        if(profile.value?.userId == null){
+            val newProfile = Profile(name = profileName.value?: "", gender = gender.value?: "man", growth = growth.value?: 0, weight = weight.value?: 0)
+            repository.insertProfile(newProfile)
+            initializeUser()
+            return
         }
         profile.value?.name = profileName.value?: ""
         profile.value?.gender = gender.value?: "man"
@@ -72,12 +72,16 @@ class MainViewModel @Inject constructor(
         repository.updateProfile(profile)
     }
 
-    fun insert() {
-        viewModelScope.launch {
-            val newProfile = Profile(name = "j", gender = "a", growth = 150, weight = 70)
-            repository.insertProfile(newProfile)
-            //profile.value = repository.getProfile()
-        }
+    fun insertConsumed(){
+        if(profile.value?.userId == null)
+            return
 
+        val newConsumed = Result(userId = profile.value!!.userId, strength = strength.value!!.toInt(), portion = portion.value!!.toInt(), quantity= quantity.value!!.toInt(), startDate = startDate.value!!, endDate = endDate.value!!)
+
+        repository.insertResult(newConsumed);
+    }
+
+    fun deleteConsumed(result: Result){
+        repository.deleteResult(result)
     }
 }

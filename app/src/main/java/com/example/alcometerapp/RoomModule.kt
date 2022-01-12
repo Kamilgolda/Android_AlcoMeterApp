@@ -3,6 +3,7 @@ package com.example.alcometerapp
 import android.content.Context
 import androidx.room.Room
 import com.example.alcometerapp.ui.profile.ProfileDao
+import com.example.alcometerapp.ui.promiles.ResultDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,7 +30,13 @@ object RoomModule {
 
     @Provides
     @Singleton
-    fun provideProfileDao(userDatabase: Database): ProfileDao {
-        return userDatabase.profileDao()
+    fun provideProfileDao(Database: Database): ProfileDao {
+        return Database.profileDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideResultDao(Database: Database): ResultDao {
+        return Database.resultDao()
     }
 }
